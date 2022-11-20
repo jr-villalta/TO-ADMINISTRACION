@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ControllerCategory;
+use App\Http\Controllers\ControllerPedido;
+use App\Http\Controllers\ControllerProveedor;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
@@ -28,26 +30,30 @@ Route::get('/', function () {
     Route::get('login',[AuthController::class,'login'])->name('login');
     Route::post('login',[AuthController::class,'loginVerify'])->name('login.verify');
     //cerrar session
-    Route::post('signOut',[AuthController::class,'signOut'])->name('signOut');
-
-
+    Route::post('signOut',[AuthController::class,'signOut'])->name('signOut');  
+    
+    
 //});
 
 //protegidas
 
 Route::middleware('auth')->group(function(){
    // Route::prefix('admin')->group(function(){
-
+        
         //usuario
         Route::resource('user',UsuarioController::class);
+        //Proveedor
+        Route::resource('proveedor',ControllerProveedor::class);
         //Categorias
         Route::resource('category',ControllerCategory::class);
         //Producto
         Route::resource('producto',ProductoController::class);
+        //pedido
+        Route::resource('pedido',ControllerPedido::class);
         //dashboard
         Route::get('dashboard',[DashboardController::class,'index'])->name('index');
-
+        
     //});
-
+    
 });
 
