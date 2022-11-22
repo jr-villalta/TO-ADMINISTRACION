@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ControllerCategory;
+use App\Http\Controllers\ControllerCompra;
+use App\Http\Controllers\ControllerCompraDetalle;
 use App\Http\Controllers\ControllerPedido;
 use App\Http\Controllers\ControllerProveedor;
 use App\Http\Controllers\DashboardController;
@@ -46,6 +48,10 @@ Route::middleware('auth')->group(function(){
         Route::resource('proveedor',ControllerProveedor::class);
         //Categorias
         Route::resource('category',ControllerCategory::class);
+        //Compra
+        Route::resource('compra',ControllerCompra::class);
+        //detalle compra
+        Route::resource('detallecompra',ControllerCompraDetalle::class);
         //Producto
         Route::resource('producto',ProductoController::class);
         //pedido
